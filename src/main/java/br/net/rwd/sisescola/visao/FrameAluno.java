@@ -1672,12 +1672,17 @@ public class FrameAluno extends javax.swing.JInternalFrame {
 			cmbTipo.setModel(new DefaultComboBoxModel(new String[] {"Pai", "Mãe", "Outro"}));
 			cmbTipo.setBounds(124, 231, 60, 20);
 			panel_responsavel.add(cmbTipo);
-			
+
 			JButton btnResp = new JButton("Selecionar Responsável Financeiro");
 			btnResp.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+
+					FramePrincipal.codResponsavel = responsavel.getRespCod();
+					
+					System.out.println(responsavel.getRespCod());
 					
 					FrameResponsavel frameResponsavel = FramePrincipal.getInstanciaResponsavel();
+					getDesktopPane().remove(frameResponsavel); 
 					getDesktopPane().add(frameResponsavel); 
 					getDesktopPane().moveToFront(frameResponsavel);
 					frameResponsavel.setVisible(true); 
