@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2006/03/20 16:24:06.389.pas,D:\Arquivos de programas\INFORAMOS\ECD\Gess\Unit2.pas=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnBD.pas</Transaction>
+    <Transaction>2006/03/20 16:24:06.409.dfm,D:\Arquivos de programas\INFORAMOS\ECD\Gess\Unit2.dfm=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnBD.dfm</Transaction>
+    <Transaction>2006/04/08 20:00:01.703.pas,D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnPreview.pas=</Transaction>
+    <Transaction>2006/04/08 20:00:01.723.dfm,D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnPreview.dfm=</Transaction>
+    <Transaction>2006/10/12 17:07:47.578.pas,D:\Arquivos de programas\INFORAMOS\ECD\Gess\Unit2.pas=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmACSTTD.pas</Transaction>
+    <Transaction>2006/10/12 17:07:47.578.dfm,D:\Arquivos de programas\INFORAMOS\ECD\Gess\Unit2.dfm=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmACSTTD.dfm</Transaction>
+    <Transaction>2006/10/12 17:10:02.921.pas,D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmACSTTD.pas=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmSeleciona.pas</Transaction>
+    <Transaction>2006/10/12 17:10:02.921.dfm,D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmACSTTD.dfm=D:\Arquivos de programas\INFORAMOS\ECD\Gess\UnDmSeleciona.dfm</Transaction>
+    <Transaction>2007/04/04 14:14:03.390.pas,C:\Arquivos DELPHI\Projetos\Delphi Win32\Gess\Unit2.pas=C:\Arquivos DELPHI\Projetos\Delphi Win32\Gess\UnCapaDiarios.pas</Transaction>
+    <Transaction>2007/04/04 14:14:03.390.dfm,C:\Arquivos DELPHI\Projetos\Delphi Win32\Gess\Unit2.dfm=C:\Arquivos DELPHI\Projetos\Delphi Win32\Gess\UnCapaDiarios.dfm</Transaction>
+    <Transaction>2014/05/02 14:27:46.773.pas,H:\PROJETOS\versionados\Gees\fontes\NetAPI.pas=</Transaction>
+    <Transaction>2014/05/03 01:17:38.274.pas,H:\PROJETOS\versionados\Gees\fontes\UnAlteraBoletim.pas=</Transaction>
+    <Transaction>2014/05/03 01:17:38.298.dfm,H:\PROJETOS\versionados\Gees\fontes\UnAlteraBoletim.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>
