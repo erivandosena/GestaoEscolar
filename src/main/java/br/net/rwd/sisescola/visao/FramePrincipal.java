@@ -41,11 +41,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 	
 	private BufferedImage img;
 	
-	static {
-		//stem.out.println(System.getProperty("java.library.path"));
-		//System.loadLibrary("dsj");
-		//Runtime.getRuntime().loadLibrary("dsj.dll");
-    }
+	public static Integer codResponsavel;
 
 	public static JDesktopPane getDesktopPane() {
 		return getInstanciaPrincipal().desktopPane;
@@ -169,6 +165,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 							public void actionPerformed(ActionEvent arg0) {
 								
 								FrameUsuario frameUsuario = getInstanciaUsuario();
+								getDesktopPane().remove(frameUsuario);
 								getDesktopPane().add(frameUsuario);
 							    frameUsuario.setVisible(true);
 	
@@ -180,11 +177,13 @@ public class FramePrincipal extends javax.swing.JFrame {
 						mntmAluno = new JMenuItem("Aluno");
 						mntmAluno.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent arg0) {
-								
+
 								FrameAluno frameAluno = getInstanciaAluno();
+								getDesktopPane().remove(frameAluno);
 								getDesktopPane().add(frameAluno);
 							    frameAluno.setVisible(true);
 							    
+
 							}
 						});
 						mntmAluno.setActionCommand("Aluno");
@@ -196,8 +195,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 							public void actionPerformed(ActionEvent arg0) {
 								
 								FrameResponsavel frameResponsavel = getInstanciaResponsavel();
+								getDesktopPane().remove(frameResponsavel);
 								getDesktopPane().add(frameResponsavel);
 							    frameResponsavel.setVisible(true);
+							    
+							    FramePrincipal.codResponsavel = null;
 							}
 						});
 						mntmResponsavel.setActionCommand("ResponsavelFinanceiro");

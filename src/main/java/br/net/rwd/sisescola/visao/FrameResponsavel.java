@@ -110,6 +110,10 @@ public class FrameResponsavel extends javax.swing.JInternalFrame {
 	public FrameResponsavel() {
 		super();
 		initGUI();
+		
+		if(FramePrincipal.codResponsavel != null)
+			carregaTabela(model.listarPorTipo(FramePrincipal.codResponsavel));
+		else
 		carregaTabela(model.listarTodos());
         ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo,lista,posicao);
 	}
@@ -120,7 +124,8 @@ public class FrameResponsavel extends javax.swing.JInternalFrame {
 			setSize(780, 540);
 			setClosable(true);
 			setTitle("Cliente - Responsável Financeiro");
-			
+			setDefaultCloseOperation(FrameResponsavel.DISPOSE_ON_CLOSE);
+
 			Component content = FramePrincipal.getInstanciaPrincipal().getContentPane();  
 			int x = (content.getWidth() - getWidth()) / 2;  
 			int y = (content.getHeight() - getHeight()) / 2;
@@ -385,6 +390,8 @@ public class FrameResponsavel extends javax.swing.JInternalFrame {
 			JButton btnFechar = new JButton("Fechar");
 			btnFechar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					
+					setVisible(false);
 					dispose();
 				}
 			});
