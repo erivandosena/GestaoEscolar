@@ -6,22 +6,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import br.net.rwd.sisescola.ApplicationContextProvider;
+import br.net.rwd.sisescola.entidade.Usuario;
+import br.net.rwd.sisescola.servico.UsuarioServico;
+import br.net.rwd.sisescola.util.Criptografia;
+
 public class FrameLogin extends javax.swing.JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
 	
+    private UsuarioServico model = (UsuarioServico) (ApplicationContextProvider.getInstance()).getApplicationContext().getBean("usuarioServico");
+	
+	private JTextField textUsuario;
+	private JPasswordField pTextSenha;
+
 	public FrameLogin() {
 		super();
 
@@ -31,9 +38,9 @@ public class FrameLogin extends javax.swing.JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		        try {
-		         //   boolean valid = dao.isValidUserAndPassword(txtUser.getText(), txtPassword.getText());
-		            if (false) {
-		            //    JOptionPane.showMessageDialog(this,"Login/Password invalid !","Login/Password invalid !",JOptionPane.ERROR_MESSAGE);
+		            boolean valido = model.selecionarUsuarioExistente(textUsuario.getText(), Criptografia.criptografarMD5(pTextSenha.getText()));
+		            if (!valido) {
+		                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro de login", JOptionPane.ERROR_MESSAGE, null);
 		                return;
 		            }
 		            setVisible(false);
@@ -45,7 +52,7 @@ public class FrameLogin extends javax.swing.JFrame {
 		        }
 			}
 		});
-		btnEntrar.setBounds(58, 111, 89, 23);
+		btnEntrar.setBounds(128, 146, 89, 23);
 		getContentPane().add(btnEntrar);
 		
 		JButton btnSair = new JButton("Sair");
@@ -54,8 +61,25 @@ public class FrameLogin extends javax.swing.JFrame {
 				System.exit(0);
 			}
 		});
-		btnSair.setBounds(231, 111, 89, 23);
+		btnSair.setBounds(222, 146, 89, 23);
 		getContentPane().add(btnSair);
+		
+		textUsuario = new JTextField();
+		textUsuario.setBounds(128, 75, 183, 20);
+		getContentPane().add(textUsuario);
+		textUsuario.setColumns(10);
+		
+		JLabel lblUsuario = new JLabel("Usuário");
+		lblUsuario.setBounds(72, 78, 46, 14);
+		getContentPane().add(lblUsuario);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(72, 107, 46, 14);
+		getContentPane().add(lblSenha);
+		
+		pTextSenha = new JPasswordField();
+		pTextSenha.setBounds(128, 104, 183, 20);
+		getContentPane().add(pTextSenha);
 		initGUI();
 	}
 	
@@ -70,5 +94,4 @@ public class FrameLogin extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -51,7 +51,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 	public FrameUsuario() {
 		super();
 		initGUI();
-		carregaTabela();
+		carregaTabela(model.listarUsuarios());
 	}
 	
 	private void initGUI() {
@@ -72,9 +72,9 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			getContentPane().add(panel_pesquisa);
 			panel_pesquisa.setLayout(null);
 			
-			JLabel lblNome_1 = new JLabel("Nome");
-			lblNome_1.setBounds(10, 28, 68, 14);
-			panel_pesquisa.add(lblNome_1);
+			JLabel lblNomePesquisa = new JLabel("Nome");
+			lblNomePesquisa.setBounds(10, 28, 68, 14);
+			panel_pesquisa.add(lblNomePesquisa);
 			
 			textPesquisa = new JTextField();
 			textPesquisa.setBounds(88, 25, 506, 20);
@@ -82,6 +82,11 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			textPesquisa.setColumns(10);
 			
 			JButton btnLocalizar = new JButton("Localizar");
+			btnLocalizar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					carregaTabela(model.listarLikeUsuario(textPesquisa.getText()));
+				}
+			});
 			btnLocalizar.setBounds(605, 24, 89, 23);
 			panel_pesquisa.add(btnLocalizar);
 			
@@ -183,14 +188,40 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 				
 				public void actionPerformed(ActionEvent arg0) {
 					
-					usuario.setUsu_nome(textNome.getText());
-					usuario.setUsu_email(textEmail.getText());
+					if (usuario == null) {
+						JOptionPane.showMessageDialog(null, "Sem alterações", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
+						return;
+					}
+					
+					usuario.setUsu_nome(textNome.getText().toUpperCase());
+					usuario.setUsu_email(textEmail.getText().toLowerCase());
 					usuario.setUsu_usuario(textUsuario.getText());
 					usuario.setUsu_senha(ptextSenha.getText());
-					if (!usuario.getUsu_senha().equals(ptextReSenha.getText())) {
+					
+					if ("".equals(usuario.getUsu_nome().trim())) {
+						JOptionPane.showMessageDialog(null, "Informe o nome completo", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
+						return;
+					}
+					if ("".equals(usuario.getUsu_email().trim())) {
+						JOptionPane.showMessageDialog(null, "Informe o e-mail", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
+						return;
+					}
+					if ("".equals(usuario.getUsu_usuario().trim())) {
+						JOptionPane.showMessageDialog(null, "Informe o nome de usuário", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
+						return;
+					}
+					
+					if(senhaAnterior == null)
+					if ("".equals(usuario.getUsu_senha().trim())) {
+						JOptionPane.showMessageDialog(null, "Informe a senha", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
+						return;
+					}
+					
+					if (!usuario.getUsu_senha().trim().equals(ptextReSenha.getText().trim())) {
 						JOptionPane.showMessageDialog(null, "Senhas não conferem!", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
 						return;
 					}
+					
 					usuario.setUsu_senha(Criptografia.criptografarMD5(usuario.getUsu_senha()));
 						
 					if (usuario.getUsu_cod() == null || usuario.getUsu_cod().intValue() == 0) {
@@ -203,16 +234,20 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 						
 					} else {
 						
-						if (!usuario.getUsu_usuario().equals(usuarioAnterior)) 
+						if (!textUsuario.getText().equalsIgnoreCase(usuarioAnterior)) 
 							if (model.selecionarUsuarioExistente(usuario.getUsu_usuario())) {
 								JOptionPane.showMessageDialog(null, "Usuário existente! Informe outro.", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
 								return;
 							}
+											
+						if ("".equalsIgnoreCase(ptextSenha.getText()))
+							usuario.setUsu_senha(senhaAnterior);
+						
 						model.alterarUsuario(usuario);
 						
 					}
-					carregaTabela();
-					
+					carregaTabela(model.listarUsuarios());
+					senhaAnterior = null;
 				}
 			});
 			btnSalvar.setBounds(103, 11, 89, 23);
@@ -225,11 +260,14 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 					int codigo = Integer.parseInt((String) tabelaUsuarios.getModel().getValueAt(linhaSelecionada, 0));
 					usuario = model.selecionarUsuario(codigo);
 					senhaAnterior = usuario.getUsu_senha();
+					usuarioAnterior = usuario.getUsu_usuario();
 					if (usuario != null) {
 						textNome.setText(usuario.getUsu_nome());
 						textEmail.setText(usuario.getUsu_email());
 						textUsuario.setText(usuario.getUsu_usuario());
 					}
+					ptextSenha.setText("");
+					ptextReSenha.setText("");
 					
 				}
 			});
@@ -244,7 +282,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 					int retorno = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?", "Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
 					if (i > -1 && retorno == 0) {
 						model.excluirUsuario(model.obterEntidade(Usuario.class, Integer.parseInt((String) tabelaUsuarios.getModel().getValueAt(i, 0))));
-						carregaTabela();
+						carregaTabela(model.listarUsuarios());
 					}
 					
 				}
@@ -315,7 +353,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 		}
 	}
 	
-	private void carregaTabela() {
+	private void carregaTabela(List<Usuario> usuarios) {
 		TableColumnModel tcmOculta = tabelaUsuarios.getColumnModel();
 		tcmOculta.getColumn(0).setMinWidth(0);
 		tcmOculta.getColumn(0).setPreferredWidth(0);
@@ -329,7 +367,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 		DefaultTableModel dfm = (DefaultTableModel) tabelaUsuarios.getModel();
 		dfm.setNumRows(0);
 
-	    lista = model.listarUsuarios();
+	    lista = usuarios;
 		Collections.sort(lista);
 
 		for (int i = 0; i < lista.size(); i++) {
@@ -349,7 +387,8 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			textEmail.setText(lista.get(0).getUsu_email());
 			textUsuario.setText(lista.get(0).getUsu_usuario());
 		}
-
+		ptextSenha.setText("");
+		ptextReSenha.setText("");
 	}
 	
 	private void tabelaMouseClicked(MouseEvent evt) {
@@ -364,5 +403,8 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 		textNome.setText(usuario.getUsu_nome());
 		textEmail.setText(usuario.getUsu_email());
 		textUsuario.setText(usuario.getUsu_usuario());
+		ptextSenha.setText("");
+		ptextReSenha.setText("");
 	}
+	
 }
