@@ -5325,3 +5325,5 @@ Caused by: java.lang.NoSuchMethodException: br.net.rwd.sisescola.servico.Usuario
 	at java.lang.Class.getDeclaredConstructor(Unknown Source)
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:65)
 	... 15 more
+10 de Dezembro de 2012 18:59:42 [AWT-EventQueue-0] 61217Ms ERROR org.hibernate.util.JDBCExceptionReporter:234 - ERROR: duplicate key value violates unique constraint "usuarios_ukey"
+10 de Dezembro de 2012 19:05:40 [AWT-EventQueue-0] 104982Ms ERROR org.hibernate.util.JDBCExceptionReporter:234 - ERROR: duplicate key value violates unique constraint "usuarios_ukey"

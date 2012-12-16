@@ -36,23 +36,34 @@ public class UsuarioServico extends DAOGenerico<Serializable> {
 		return dao.obterEntidade(Usuario.class, codigo);
 	}
 
-	public Usuario selecionarUsuarioLogin(String login) {
+	public List<Usuario> listarUsuarios() {
+		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u ORDER BY u.usu_cod ASC");
+	}
+
+	public List<Usuario> listarLikeUsuario(String nome) {
+		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u WHERE lower(u.usu_nome) like ?1 OR lower(u.usu_usuario) like ?1", "%"+ nome.toLowerCase() + "%");
+	}
+	
+	public Usuario selecionarUsuario(String login) {
 		return dao.obterEntidade(Usuario.class, "SELECT u FROM Usuario u WHERE u.usu_usuario = ?1", login);
 	}
 	
 	public boolean selecionarUsuarioExistente(String login) {
-		if(selecionarUsuarioLogin(login) != null)
+		if(selecionarUsuario(login) != null)
 			return true;
 		else
 			return false;
 	}
-	
-	public List<Usuario> listarUsuarios() {
-		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u ORDER BY u.usu_cod ASC");
+
+	public Usuario selecionaUsuarioLogin(String usuario, String senha) {
+		return dao.obterEntidade(Usuario.class, "SELECT u FROM Usuario u WHERE u.usu_usuario = ?1 AND u.usu_senha = ?2", usuario, senha);
 	}
 	
-	public List<Usuario> listarLikeUsuario(String nome) {
-		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u WHERE lower(u.usu_nome) like ?1", "%"+ nome.toLowerCase() + "%");
+	public boolean selecionarUsuarioExistente(String login, String senha) {
+		if(selecionaUsuarioLogin(login,senha) != null)
+			return true;
+		else
+			return false;
 	}
 	
 }
