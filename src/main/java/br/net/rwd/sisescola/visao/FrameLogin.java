@@ -31,7 +31,7 @@ public class FrameLogin extends javax.swing.JFrame {
 
 	public FrameLogin() {
 		super();
-
+		
 		getContentPane().setLayout(null);
 		
 		JButton btnEntrar = new JButton("Entrar");

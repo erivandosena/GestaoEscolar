@@ -8,7 +8,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 
-import br.net.rwd.sisescola.visao.FrameLogin;
+import br.net.rwd.sisescola.visao.FramePrincipal;
 
 public class Inicial extends ApplicationContextProvider {
 
@@ -42,9 +42,16 @@ public class Inicial extends ApplicationContextProvider {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
+				/* ================= temporario durante faze de desenvolvimneto =============== */
+		        FramePrincipal.getInstancia().setVisible(true);
+		        /* ================= temporario durante faze de desenvolvimneto =============== */
+				
+		        /*
 				FrameLogin frameLogin = new FrameLogin();
 				frameLogin.setLocationRelativeTo(null);
 				frameLogin.setVisible(true);
+				*/
 			}
 		});
 	}
