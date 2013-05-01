@@ -16,11 +16,11 @@ public class Redimensiona {
 		
 		BufferedImage novoTamanho = null;
 		byte[] bytesOut = null;
-		String extensao = "png";
+		String extensao = "jpg";
 		
 		try {
 			BufferedImage bi = ImageIO.read(new ByteArrayInputStream(bytesImagem));
-			
+
 			int larguraImg   = bi.getWidth();
 			int alturaImg   = bi.getHeight();
 			int novaAltura = (larguraFixa * alturaImg) / larguraImg;
