@@ -26,7 +26,9 @@ import javax.swing.table.TableModel;
 import br.net.rwd.sisescola.ApplicationContextProvider;
 import br.net.rwd.sisescola.entidade.Usuario;
 import br.net.rwd.sisescola.servico.UsuarioServico;
+import br.net.rwd.sisescola.util.ControlesSwing;
 import br.net.rwd.sisescola.util.Criptografia;
+import br.net.rwd.sisescola.util.Uteis;
 
 public class FrameUsuario extends javax.swing.JInternalFrame {
 
@@ -36,6 +38,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 	private List<Usuario> lista;
 	private Usuario usuario;
 	private int linhaSelecionada;
+	private int posicao;
 	private String usuarioAnterior;
 	private String senhaAnterior;
 	
@@ -47,11 +50,22 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 	private JScrollPane scroll;
 	private JTextField textEmail;
 	private JTextField textPesquisa;
+	
+	private JButton btnNovo;
+	private JButton btnSalvar;
+	private JButton btnAlterar;
+	private JButton btnExcluir;
+	private JButton btnAnular;
+	private JButton btnPrimeiro;
+	private JButton btnAnterior;
+	private JButton btnProximo;
+	private JButton btnUltimo;
 		
 	public FrameUsuario() {
 		super();
 		initGUI();
 		carregaTabela(model.listarUsuarios());
+		ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao);
 	}
 	
 	private void initGUI() {
@@ -61,7 +75,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			setClosable(true);
 			setTitle("Usuário");
 			
-			Component content = FramePrincipal.getInstancia().getContentPane();  
+			Component content = FramePrincipal.getInstanciaPrincipal().getContentPane();  
 			int x = (content.getWidth() - getWidth()) / 2;  
 			int y = (content.getHeight() - getHeight()) / 2;
 			setLocation(x, y);
@@ -145,7 +159,13 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			getContentPane().add(panel_lista);
 			panel_lista.setLayout(null);
 			
-			TableModel tabelaModel = new DefaultTableModel(new String[][] { {} }, new String[] { "Código", "Nome", "E-mail" });
+			TableModel tabelaModel = new DefaultTableModel(new String[][] { {} }, new String[] { "Código", "Nome", "E-mail" }) {
+				private static final long serialVersionUID = 1L;
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
 			tabelaUsuarios = new JTable();
 			tabelaUsuarios.addMouseListener(new MouseAdapter() {
 				@Override
@@ -167,23 +187,22 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			getContentPane().add(panel_controles);
 			panel_controles.setLayout(null);
 			
-			JButton btnNovo = new JButton("Novo");
+			btnNovo = new JButton("Novo");
 			btnNovo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					usuario = new Usuario();
-					textNome.setText("");
-					textEmail.setText("");
-					textUsuario.setText("");
-					ptextSenha.setText("");
-					ptextReSenha.setText("");
+					String estadoPesquisa = textPesquisa.getText();
 					
+					usuario = new Usuario();
+					Uteis.limpaCampos(getContentPane());
+					ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao,"N");
+					textPesquisa.setText(estadoPesquisa);
 				}
 			});
-			btnNovo.setBounds(10, 11, 89, 23);
+			btnNovo.setBounds(10, 11, 65, 23);
 			panel_controles.add(btnNovo);
 			
-			JButton btnSalvar = new JButton("Salvar");
+			btnSalvar = new JButton("Salvar");
 			btnSalvar.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent arg0) {
@@ -196,7 +215,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 					usuario.setUsu_nome(textNome.getText().toUpperCase());
 					usuario.setUsu_email(textEmail.getText().toLowerCase());
 					usuario.setUsu_usuario(textUsuario.getText());
-					usuario.setUsu_senha(ptextSenha.getText());
+					usuario.setUsu_senha(new String(ptextSenha.getPassword()));
 					
 					if ("".equals(usuario.getUsu_nome().trim())) {
 						JOptionPane.showMessageDialog(null, "Informe o nome completo", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
@@ -217,7 +236,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 						return;
 					}
 					
-					if (!usuario.getUsu_senha().trim().equals(ptextReSenha.getText().trim())) {
+					if (!usuario.getUsu_senha().trim().equals(new String(ptextReSenha.getPassword()).trim())) {
 						JOptionPane.showMessageDialog(null, "Senhas não conferem!", "Informação", JOptionPane.INFORMATION_MESSAGE, null);
 						return;
 					}
@@ -240,7 +259,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 								return;
 							}
 											
-						if ("".equalsIgnoreCase(ptextSenha.getText()))
+						if ("".equalsIgnoreCase(new String(ptextSenha.getPassword())))
 							usuario.setUsu_senha(senhaAnterior);
 						
 						model.alterarUsuario(usuario);
@@ -248,12 +267,13 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 					}
 					carregaTabela(model.listarUsuarios());
 					senhaAnterior = null;
+					ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao, "S");
 				}
 			});
-			btnSalvar.setBounds(103, 11, 89, 23);
+			btnSalvar.setBounds(77, 11, 65, 23);
 			panel_controles.add(btnSalvar);
 			
-			JButton btnAlterar = new JButton("Alterar");
+			btnAlterar = new JButton("Alterar");
 			btnAlterar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -268,13 +288,14 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 					}
 					ptextSenha.setText("");
 					ptextReSenha.setText("");
+					ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao, "A");
 					
 				}
 			});
-			btnAlterar.setBounds(196, 11, 89, 23);
+			btnAlterar.setBounds(144, 11, 65, 23);
 			panel_controles.add(btnAlterar);
 			
-			JButton btnExcluir = new JButton("Excluir");
+			btnExcluir = new JButton("Excluir");
 			btnExcluir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -284,54 +305,77 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 						model.excluirUsuario(model.obterEntidade(Usuario.class, Integer.parseInt((String) tabelaUsuarios.getModel().getValueAt(i, 0))));
 						carregaTabela(model.listarUsuarios());
 					}
+					ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao, "E");
 					
 				}
 			});
-			btnExcluir.setBounds(289, 11, 89, 23);
+			btnExcluir.setBounds(211, 11, 65, 23);
 			panel_controles.add(btnExcluir);
 			
-			JButton btnPrimeiro = new JButton("|<");
+			btnAnular = new JButton("Anular");
+			btnAnular.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					usuario = null;
+					if(!lista.isEmpty()) {
+						posicao = linhaSelecionada = 0;
+						preencheCampos(posicao);
+					}
+					ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao, "C");
+				}
+			});
+			btnAnular.setBounds(278, 11, 65, 23);
+			panel_controles.add(btnAnular);
+			
+			btnPrimeiro = new JButton("|<");
+			btnPrimeiro.setToolTipText("Primeiro");
 			btnPrimeiro.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(!lista.isEmpty()) {
-						int posicao = linhaSelecionada = 0;
+						posicao = linhaSelecionada = 0;	
 						preencheCampos(posicao);
+						ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao);
 					}
 				}
 			});
 			btnPrimeiro.setBounds(388, 11, 50, 23);
 			panel_controles.add(btnPrimeiro);
 			
-			JButton btnAnterior = new JButton("<<");
+			btnAnterior = new JButton("<<");
+			btnAnterior.setToolTipText("Anterior");
 			btnAnterior.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(!lista.isEmpty() && linhaSelecionada > 0) {
-						int posicao = --linhaSelecionada;
+						posicao = --linhaSelecionada;
 						preencheCampos(posicao);
+						ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao);
 					}
 				}
 			});
 			btnAnterior.setBounds(441, 11, 50, 23);
 			panel_controles.add(btnAnterior);
 			
-			JButton btnProximo = new JButton(">>");
+			btnProximo = new JButton(">>");
+			btnProximo.setToolTipText("Próximo");
 			btnProximo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(!lista.isEmpty() && linhaSelecionada < (lista.size()) - 1) {
-						int posicao = ++linhaSelecionada;
+						posicao = ++linhaSelecionada;
 						preencheCampos(posicao);
+						ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao);
 					}
 				}
 			});
 			btnProximo.setBounds(494, 11, 50, 23);
 			panel_controles.add(btnProximo);
 			
-			JButton btnUltimo = new JButton(">|");
+			btnUltimo = new JButton(">|");
+			btnUltimo.setToolTipText("Último");
 			btnUltimo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(!lista.isEmpty()) {
-						int posicao = linhaSelecionada = lista.size()-1;
+						posicao = linhaSelecionada = lista.size()-1;
 						preencheCampos(posicao);
+						ControlesSwing.botoesControle(btnNovo, btnSalvar, btnAlterar, btnExcluir, btnAnular, btnPrimeiro, btnAnterior, btnProximo, btnUltimo, lista, posicao);
 					}
 				}
 			});
@@ -346,8 +390,7 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 			});
 			btnFechar.setBounds(605, 11, 89, 23);
 			panel_controles.add(btnFechar);
-			
-			setVisible(true);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -395,6 +438,11 @@ public class FrameUsuario extends javax.swing.JInternalFrame {
 		linhaSelecionada = tabelaUsuarios.getSelectedRow();
 		if (!lista.isEmpty()) {
 			preencheCampos(linhaSelecionada);
+			//duplo clique
+			if (evt.getClickCount() == 2)  
+	        {  
+				 
+	        } 
 		}
 	}
 	

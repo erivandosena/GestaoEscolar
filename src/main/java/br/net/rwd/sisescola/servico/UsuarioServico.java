@@ -41,7 +41,7 @@ public class UsuarioServico extends DAOGenerico<Serializable> {
 	}
 
 	public List<Usuario> listarLikeUsuario(String nome) {
-		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u WHERE lower(u.usu_nome) like ?1 OR lower(u.usu_usuario) like ?1", "%"+ nome.toLowerCase() + "%");
+		return dao.obterLista(Usuario.class, "SELECT u FROM Usuario u WHERE upper(u.usu_nome) like ?1 OR upper(u.usu_usuario) like ?1", "%"+ nome.toUpperCase() + "%");
 	}
 	
 	public Usuario selecionarUsuario(String login) {

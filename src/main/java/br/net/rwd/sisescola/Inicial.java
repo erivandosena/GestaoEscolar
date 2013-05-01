@@ -19,6 +19,7 @@ public class Inicial extends ApplicationContextProvider {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Hello World!\nEm 26/11/2012 tudo se iniciou aqui!");
+
 		try {
 			//inicia o Spring
 			getInstance().getApplicationContext();
@@ -43,9 +44,9 @@ public class Inicial extends ApplicationContextProvider {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				
-				/* ================= temporario durante faze de desenvolvimneto =============== */
-		        FramePrincipal.getInstancia().setVisible(true);
-		        /* ================= temporario durante faze de desenvolvimneto =============== */
+				/* ================= temporario durante fase de desenvolvimneto =============== */
+		        FramePrincipal.getInstanciaPrincipal().setVisible(true);
+		        /* ================= temporario durante fase de desenvolvimneto =============== */
 				
 		        /*
 				FrameLogin frameLogin = new FrameLogin();

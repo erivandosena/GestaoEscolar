@@ -16,7 +16,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import br.net.rwd.sisescola.ApplicationContextProvider;
-import br.net.rwd.sisescola.entidade.Usuario;
 import br.net.rwd.sisescola.servico.UsuarioServico;
 import br.net.rwd.sisescola.util.Criptografia;
 
@@ -38,14 +37,14 @@ public class FrameLogin extends javax.swing.JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		        try {
-		            boolean valido = model.selecionarUsuarioExistente(textUsuario.getText(), Criptografia.criptografarMD5(pTextSenha.getText()));
+					boolean valido = model.selecionarUsuarioExistente(textUsuario.getText(), Criptografia.criptografarMD5(new String(pTextSenha.getPassword())));
 		            if (!valido) {
 		                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Erro de login", JOptionPane.ERROR_MESSAGE, null);
 		                return;
 		            }
 		            setVisible(false);
 		            
-		            FramePrincipal.getInstancia().setVisible(true);
+		            FramePrincipal.getInstanciaPrincipal().setVisible(true);
 		            //new FramePrincipal().setVisible(true);
 		        } catch (Exception ex) {
 		            Logger.getLogger(FrameLogin.class.getName()).log(Level.ERROR, null, ex);
@@ -88,7 +87,7 @@ public class FrameLogin extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			setPreferredSize(new Dimension(400, 300));
 			setBounds(new Rectangle(0, 0, 400, 300));
-			
+
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
