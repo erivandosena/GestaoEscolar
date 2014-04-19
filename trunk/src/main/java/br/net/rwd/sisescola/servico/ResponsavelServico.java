@@ -30,6 +30,10 @@ public class ResponsavelServico {
 	public Responsavel selecionarPorTipo(Integer i) {
 		return dao.obterEntidade(Responsavel.class, i);
 	}
+	
+	public List<Responsavel> listarPorTipo(Integer i) {
+		return dao.obterLista(Responsavel.class, "SELECT r FROM Responsavel r WHERE r.respCod = ?1", i);
+	}
 
 	public List<Responsavel> listarPorNome(String s) {
 		return dao.obterLista(Responsavel.class, "SELECT r FROM Responsavel r WHERE upper(r.respNome) like ?1", "%"+ s.toUpperCase() + "%");
