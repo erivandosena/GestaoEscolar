@@ -17,6 +17,13 @@ public class Inicial extends ApplicationContextProvider {
 	/**
 	 * @param args
 	 */
+	
+	static {
+		System.out.println(System.getProperty("java.library.path"));
+		//System.loadLibrary("dsj");
+		//Runtime.getRuntime().loadLibrary("dsj");
+    }
+	
 	public static void main(String[] args) {
 		System.out.println("Hello World!\nEm 26/11/2012 tudo se iniciou aqui!");
 
