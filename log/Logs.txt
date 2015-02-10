@@ -1,1 +1,0 @@
-07 de Abril de 2013 10:58:51 [AWT-EventQueue-0] 65204Ms ERROR org.hibernate.util.JDBCExceptionReporter:234 - Connections could not be acquired from the underlying database!
