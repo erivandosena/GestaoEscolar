@@ -1,0 +1,288 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{FE868B2C-EE0B-48C3-A787-D80C4D1CCF15}</ProjectGuid>
+			<MainSource>GEES.DPR</MainSource>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.3</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vcl;rtl;vclx;indy;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOffice2k;BackupBR;qrpt;teeqr</DCC_UsePackage>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_E>false</DCC_E>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="GEES.DPR">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="UnPrincipal.pas">
+				<Form>FrmPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="UnAbertura.pas">
+				<Form>FrmAbertura</Form>
+			</DCCReference>
+			<DCCReference Include="UnAlunos.pas">
+				<Form>FrmAlunos</Form>
+			</DCCReference>
+			<DCCReference Include="UnAniversariantes.pas">
+				<Form>FrmAniversariantes</Form>
+			</DCCReference>
+			<DCCReference Include="UnBackup.pas">
+				<Form>FrmBackup</Form>
+			</DCCReference>
+			<DCCReference Include="UnDm.pas">
+				<Form>Dm</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnEmpresa.pas">
+				<Form>FrmEmpresa</Form>
+			</DCCReference>
+			<DCCReference Include="UnEncrypt.pas"/>
+			<DCCReference Include="UnLocalizar.pas">
+				<Form>FrmLocalizar</Form>
+			</DCCReference>
+			<DCCReference Include="UnSenha.pas">
+				<Form>FrmSenha</Form>
+			</DCCReference>
+			<DCCReference Include="UnUsuarios.pas">
+				<Form>FrmUsuarios</Form>
+			</DCCReference>
+			<DCCReference Include="UnFotos.pas">
+				<Form>FrmFotos</Form>
+			</DCCReference>
+			<DCCReference Include="UnFrmDataGeral.pas">
+				<Form>FrmDataGeral</Form>
+			</DCCReference>
+			<DCCReference Include="UnInativos.pas">
+				<Form>FrmInativos</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelAniv.pas">
+				<Form>FrmRelAniv</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelAlunos.pas">
+				<Form>FrmRelAlunos</Form>
+			</DCCReference>
+			<DCCReference Include="UnListaAlunos.pas">
+				<Form>FrmListaAlunos</Form>
+			</DCCReference>
+			<DCCReference Include="UnCarne.pas">
+				<Form>FrmCarne</Form>
+			</DCCReference>
+			<DCCReference Include="UnRecebimentos.pas">
+				<Form>FrmRecebimentos</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelPlanilha.pas">
+				<Form>FrmRelPlanilha</Form>
+			</DCCReference>
+			<DCCReference Include="UnConsulta.pas">
+				<Form>FrmConsulta</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelCarne.pas">
+				<Form>FrmRelCarne</Form>
+			</DCCReference>
+			<DCCReference Include="UnDisciplinas.pas">
+				<Form>FrmDisciplina</Form>
+			</DCCReference>
+			<DCCReference Include="UnMatriculas.pas">
+				<Form>FrmMatriculas</Form>
+			</DCCReference>
+			<DCCReference Include="UnInsereAluno.pas">
+				<Form>FrmInsereAluno</Form>
+			</DCCReference>
+			<DCCReference Include="UnBoletim.pas">
+				<Form>FrmBoletim</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelBoletim.pas">
+				<Form>FrmRelBoletim</Form>
+			</DCCReference>
+			<DCCReference Include="UnImpressaoBoletim.pas">
+				<Form>FrmImpressaoBoletim</Form>
+			</DCCReference>
+			<DCCReference Include="UnGraficoAlunos.pas">
+				<Form>FrmGraficoAlunos</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelMedias.pas">
+				<Form>FrmRelMedias</Form>
+			</DCCReference>
+			<DCCReference Include="UnListaMedias.pas">
+				<Form>FrmListaMedias</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelCarteiras.pas">
+				<Form>FrmRelCarteiras</Form>
+			</DCCReference>
+			<DCCReference Include="UnCarteiras.pas">
+				<Form>FrmCarteiras</Form>
+			</DCCReference>
+			<DCCReference Include="UnReempresaoCart.pas">
+				<Form>FrmReempresaoCart</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelReImpCarteira.pas">
+				<Form>FrmRelReImpCarteira</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelExtrato.pas">
+				<Form>FrmRelExtrato</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelCapasCarne.pas">
+				<Form>FrmRelCapasCarne</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelAta.pas">
+				<Form>FrmRelAta</Form>
+			</DCCReference>
+			<DCCReference Include="UnAta.pas">
+				<Form>FrmAta</Form>
+			</DCCReference>
+			<DCCReference Include="UnDevedores.pas">
+				<Form>FrmDevedores</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelDevedores.pas">
+				<Form>FrmRelDevedores</Form>
+			</DCCReference>
+			<DCCReference Include="UnDiario.pas">
+				<Form>FrmDiario</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelDiario.pas">
+				<Form>FrmRelDiario</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelDiarioInf.pas">
+				<Form>FrmRelDiarioInf</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelCapDiaFun.pas">
+				<Form>FrmRelCapDiaFun</Form>
+			</DCCReference>
+			<DCCReference Include="UnListaAlunosRec.pas">
+				<Form>FrmListaAlunosRec</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelAlunosRec.pas">
+				<Form>FrmRelAlunosRec</Form>
+			</DCCReference>
+			<DCCReference Include="UnHistorico.pas">
+				<Form>FrmHistorico</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelCertFun.pas">
+				<Form>FrmRelCertFun</Form>
+			</DCCReference>
+			<DCCReference Include="UnCertificado.pas">
+				<Form>FrmCertificado</Form>
+			</DCCReference>
+			<DCCReference Include="UnFichaNota.pas">
+				<Form>FrmFichaNota</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelFichaNota.pas">
+				<Form>FrmRelFichaNota</Form>
+			</DCCReference>
+			<DCCReference Include="UnBD.pas">
+				<Form>FrmBD</Form>
+			</DCCReference>
+			<DCCReference Include="UnTransferencias.pas">
+				<Form>FrmTransferencias</Form>
+			</DCCReference>
+			<DCCReference Include="UnDmSeleciona.pas">
+				<Form>DmSeleciona</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UnCursos.pas">
+				<Form>FrmCursos</Form>
+			</DCCReference>
+			<DCCReference Include="UnDadosPais.pas">
+				<Form>FrmDadosPais</Form>
+			</DCCReference>
+			<DCCReference Include="UnRelPais.pas">
+				<Form>FrmRelPais</Form>
+			</DCCReference>
+			<DCCReference Include="UnCapaDiarios.pas">
+				<Form>FrmCapaDiarios</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">GEES.DPR</Source>
+					</Source>
+					<Language>
+						<Language Name="ProjectLang">$00000416</Language>
+					</Language>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">6</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">INFORAMOS COM. E SERV. DE INFOR. LTDA ME</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.6</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">GEES.exe</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">Erivando Sena</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks">INFORAMOS</VersionInfoKeys>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">GEES</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">Suporte: E-mail:inforamos.servicos@bol.com.br</VersionInfoKeys>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
