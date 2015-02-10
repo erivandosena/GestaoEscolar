@@ -1,0 +1,115 @@
+unit UnRelPais;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, QRCtrls, QuickRpt, ExtCtrls, DB, Jpeg, IBCustomDataSet, IBQuery,
+  StdCtrls, grimgctrl;
+
+type
+  TFrmRelPais = class(TForm)
+    QuickRep1: TQuickRep;
+    DetailBand1: TQRBand;
+    QRDBText1: TQRDBText;
+    QRDBText3: TQRDBText;
+    QRLabel1: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRDBText6: TQRDBText;
+    QRDBText2: TQRDBText;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel7: TQRLabel;
+    QRLabel9: TQRLabel;
+    QRDBText8: TQRDBText;
+    QRDBText9: TQRDBText;
+    QRLabel10: TQRLabel;
+    QRLabel11: TQRLabel;
+    QRLabel12: TQRLabel;
+    QRLabel13: TQRLabel;
+    QRDBText12: TQRDBText;
+    QRDBText13: TQRDBText;
+    QRLabel14: TQRLabel;
+    QRLabel15: TQRLabel;
+    QRLabel16: TQRLabel;
+    QRMemo: TQRMemo;
+    IBQueryPais: TIBQuery;
+    DS_Pais: TDataSource;
+    Lab_end_pai: TQRLabel;
+    Lab_end_mae: TQRLabel;
+    Lab_end_resp: TQRLabel;
+    Lab_dn_pai: TQRLabel;
+    Lab_dn_mae: TQRLabel;
+    Lab_dn_resp: TQRLabel;
+    QRLabel8: TQRLabel;
+    QRMemo1: TQRMemo;
+    QRSubDetail1: TQRSubDetail;
+    ColumnHeaderBand1: TQRBand;
+    QRShape1: TQRShape;
+    QRLabel_Titulo: TQRLabel;
+    QRLabel17: TQRLabel;
+    procedure QuickRep1BeforePrint(Sender: TCustomQuickRep;
+      var PrintReport: Boolean);
+    procedure DetailBand1BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmRelPais: TFrmRelPais;
+
+implementation
+
+uses UnDm, UnDadosPais, UnPrincipal;
+
+
+{$R *.dfm}
+
+procedure TFrmRelPais.DetailBand1BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+Dm.IBDS_ALUNOS.FindFirst;
+Dm.IBDS_ALUNOS.Locate('MATRICULA', IBQueryPais.FieldByName('MATRICULA').AsString, []);
+Lab_end_pai.Caption:= Dm.IBDS_ALUNOSENDERECO_PAI.AsString+' '+Dm.IBDS_ALUNOSBAIRRO_PAI.AsString;
+Lab_end_mae.Caption:= Dm.IBDS_ALUNOSENDERECO_MAE.AsString+' '+Dm.IBDS_ALUNOSBAIRRO_MAE.AsString;
+Lab_end_resp.Caption:= Dm.IBDS_ALUNOSENDERECO_RESP.AsString+' '+Dm.IBDS_ALUNOSBAIRRO_RESP.AsString;
+Lab_dn_pai.Caption:=  Dm.IBDS_ALUNOSDATA_NASC_PAI.AsString;
+Lab_dn_mae.Caption:=  Dm.IBDS_ALUNOSDATA_NASC_MAE.AsString;
+Lab_dn_resp.Caption:= Dm.IBDS_ALUNOSDATA_NASC_RESP.AsString;
+QRMemo.Lines.Text:= Dm.IBDS_ALUNOSREMEDIOS_PROIBIDOS.AsString;
+QRMemo1.Lines.Text:= Dm.IBDS_ALUNOSREMEDIOS_UTILIZADOS.AsString;
+end;
+
+procedure TFrmRelPais.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Action:=Cafree;
+end;
+
+procedure TFrmRelPais.QuickRep1BeforePrint(Sender: TCustomQuickRep;
+  var PrintReport: Boolean);
+begin
+with IBQueryPais do
+begin
+Close;
+UnPrepare;
+SQL.Clear;
+SQL.Add('select distinct MATRICULA, NOME_ALUNO, DATA_NASCIMENTO, NOME_PAI, TEL_PAI, NOME_MAE, TEL_MAE, NOME_RESP, TEL_RESP  from MATRICUL ');
+SQL.Add('where SERIE = :Seri and TURMA = :Turm and TURNO = :Turn and ANO_LETIVO = :Ano');
+ParamByName('Seri').AsString:= FrmDadosPais.CBox_Serie.Text;
+ParamByName('Turm').AsString:= FrmDadosPais.CBox_Turma.Text;
+ParamByName('Turn').AsString:= FrmDadosPais.CBox_Turno.Text;
+ParamByName('Ano').AsString:= AnoLetivo;
+SQL.Add('order by NOME_ALUNO');
+Prepare;
+Open;
+end;
+QRLabel_Titulo.Caption:= FrmDadosPais.CBox_Serie.Text+ '  Turma:'+FrmDadosPais.CBox_Turma.Text+ '  Turno:'+FrmDadosPais.CBox_Turno.Text+ '  Ano Letivo:'+AnoLetivo;
+end;
+
+end.
