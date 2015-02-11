@@ -64,6 +64,9 @@ uses
   UnRelPais in 'UnRelPais.pas' {FrmRelPais},
   UnCapaDiarios in 'UnCapaDiarios.pas' {FrmCapaDiarios};
 
+{$WARN UNIT_PLATFORM OFF}
+{$WARN SYMBOL_PLATFORM OFF}
+
 {$R *.res}
 
 Var HprevHist : HWND;

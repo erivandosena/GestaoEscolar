@@ -1152,7 +1152,7 @@ object FrmBoletim: TFrmBoletim
     Font.Height = -19
     Font.Name = 'Courier'
     Font.Style = [fsBold]
-    ItemHeight = 16
+    ItemHeight = 0
     ParentFont = False
     TabOrder = 11
     OnKeyDown = Edit1KeyDown

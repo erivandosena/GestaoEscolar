@@ -149,9 +149,9 @@ object FrmBackup: TFrmBackup
     object Label1: TLabel
       Left = 212
       Top = 23
-      Width = 234
+      Width = 212
       Height = 13
-      Caption = 'E:\PROJETOS\versionados\Gees\fontes - C'#243'pia'
+      Caption = 'E:\...\PROJETOS\versionados\Gees\fontes'
       Transparent = True
     end
     object DriveComboBox1: TDriveComboBox

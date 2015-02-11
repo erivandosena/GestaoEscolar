@@ -99,13 +99,15 @@ begin
 Close;
 UnPrepare;
 SQL.Clear;
-SQL.Add('select distinct MATRICULA, NOME_ALUNO, DATA_NASCIMENTO, NOME_PAI, TEL_PAI, NOME_MAE, TEL_MAE, NOME_RESP, TEL_RESP  from MATRICUL ');
-SQL.Add('where SERIE = :Seri and TURMA = :Turm and TURNO = :Turn and ANO_LETIVO = :Ano');
+//SQL.Add('select distinct MATRICULA, NOME_ALUNO, DATA_NASCIMENTO, NOME_PAI, TEL_PAI, NOME_MAE, TEL_MAE, NOME_RESP, TEL_RESP  from MATRICUL ');
+//SQL.Add('where SERIE = :Seri and TURMA = :Turm and TURNO = :Turn and ANO_LETIVO = :Ano');
+SQL.Add('select distinct M.MATRICULA, A.NOME_ALUNO, A.DATA_NASCIMENTO, A.NOME_PAI, A.TEL_PAI, A.NOME_MAE, A.TEL_MAE, A.NOME_RESP, A.TEL_RESP  from MATRICUL M, ALUNOS A ');
+SQL.Add('where M.SERIE = :Seri and M.TURMA = :Turm and M.TURNO = :Turn and M.ANO_LETIVO = :Ano and A.MATRICULA = M.MATRICULA');
 ParamByName('Seri').AsString:= FrmDadosPais.CBox_Serie.Text;
 ParamByName('Turm').AsString:= FrmDadosPais.CBox_Turma.Text;
 ParamByName('Turn').AsString:= FrmDadosPais.CBox_Turno.Text;
 ParamByName('Ano').AsString:= AnoLetivo;
-SQL.Add('order by NOME_ALUNO');
+SQL.Add('order by M.NOME_ALUNO');
 Prepare;
 Open;
 end;
