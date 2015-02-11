@@ -460,7 +460,7 @@ IBDS_ExibeNotas.Close;
 IBDS_ExibeNotas.SelectSQL.Clear;
 IBDS_ExibeNotas.SelectSQL.Add('select * from NOTAS ');
 IBDS_ExibeNotas.SelectSQL.Add('where COD_BOLE =:CBoletim ');
-IBDS_ExibeNotas.ParamByName('CBoletim').AsInteger:= Dm.IBDS_BOLETIM.FieldByName('COD_BOLE').Value;
+IBDS_ExibeNotas.ParamByName('CBoletim').AsInteger:= Dm.IBDS_BOLETIM.FieldByName('COD_BOLE').AsInteger;
 //IBDS_ExibeNotas.SelectSQL.Add('order by COD_NOTA');
 IBDS_ExibeNotas.Open;
 
