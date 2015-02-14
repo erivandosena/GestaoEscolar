@@ -3433,7 +3433,7 @@ object FrmRelAta: TFrmRelAta
       object QRLabel2: TQRLabel
         Left = 1
         Top = 6
-        Width = 80
+        Width = 97
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -3444,12 +3444,12 @@ object FrmRelAta: TFrmRelAta
           44.979166666666670000
           2.645833333333333000
           15.875000000000000000
-          211.666666666666700000)
+          256.645833333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0 www.rwd.net.br'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText

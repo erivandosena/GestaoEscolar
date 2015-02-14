@@ -2131,9 +2131,9 @@ object FrmRelReImpCarteira: TFrmRelReImpCarteira
       KeepOnOnePage = False
       BandType = rbPageFooter
       object QRLabel6: TQRLabel
-        Left = 0
+        Left = 5
         Top = 1
-        Width = 114
+        Width = 143
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -2142,14 +2142,14 @@ object FrmRelReImpCarteira: TFrmRelReImpCarteira
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          0.000000000000000000
+          13.229166666666670000
           2.645833333333333000
-          301.625000000000000000)
+          378.354166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0 www.rwd.net.br'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
