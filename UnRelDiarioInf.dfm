@@ -4180,7 +4180,7 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
           44.979166666666670000
           1439.333333333333000000
           224.895833333333300000
-          76.729166666666680000)
+          76.729166666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -4209,9 +4209,9 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1994.958333333334000000
+          1994.958333333333000000
           224.895833333333300000
-          89.958333333333320000)
+          89.958333333333330000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -4242,7 +4242,7 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
           44.979166666666670000
           2307.166666666667000000
           224.895833333333300000
-          84.666666666666680000)
+          84.666666666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -4271,9 +4271,9 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          907.520833333333400000
+          907.520833333333300000
           224.895833333333300000
-          97.895833333333340000)
+          97.895833333333330000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -4389,7 +4389,7 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
       object QRLabel43: TQRLabel
         Left = 1008
         Top = 132
-        Width = 42
+        Width = 137
         Height = 13
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -4397,15 +4397,15 @@ object FrmRelDiarioInf: TFrmRelDiarioInf
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          34.395833333333340000
+          34.395833333333330000
           2667.000000000000000000
           349.250000000000000000
-          111.125000000000000000)
+          362.479166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
