@@ -2133,7 +2133,7 @@ object FrmRelCarteiras: TFrmRelCarteiras
       object QRLabel6: TQRLabel
         Left = 0
         Top = 1
-        Width = 88
+        Width = 112
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -2144,12 +2144,12 @@ object FrmRelCarteiras: TFrmRelCarteiras
           44.979166666666670000
           0.000000000000000000
           2.645833333333333000
-          232.833333333333300000)
+          296.333333333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0 www.rwd.net.br'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText

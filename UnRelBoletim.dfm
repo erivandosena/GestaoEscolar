@@ -3134,7 +3134,7 @@ object FrmRelBoletim: TFrmRelBoletim
       object QRSysData2: TQRSysData
         Left = 13
         Top = 369
-        Width = 125
+        Width = 101
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -3145,7 +3145,7 @@ object FrmRelBoletim: TFrmRelBoletim
           44.979166666666670000
           34.395833333333330000
           976.312500000000000000
-          330.729166666666700000)
+          267.229166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -3554,7 +3554,7 @@ object FrmRelBoletim: TFrmRelBoletim
       object QRLabel11: TQRLabel
         Left = 0
         Top = 88
-        Width = 88
+        Width = 112
         Height = 16
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -3565,12 +3565,12 @@ object FrmRelBoletim: TFrmRelBoletim
           42.333333333333330000
           0.000000000000000000
           232.833333333333300000
-          232.833333333333300000)
+          296.333333333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0 www.rwd.net.br'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText

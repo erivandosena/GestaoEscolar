@@ -888,7 +888,7 @@ object FrmRelDiario: TFrmRelDiario
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        42.333333333333340000
+        42.333333333333330000
         2860.145833333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
@@ -1032,7 +1032,7 @@ object FrmRelDiario: TFrmRelDiario
           44.979166666666670000
           1561.041666666667000000
           2.645833333333333000
-          76.729166666666680000)
+          76.729166666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -3031,7 +3031,7 @@ object FrmRelDiario: TFrmRelDiario
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          92.604166666666680000
+          92.604166666666670000
           1854.729166666667000000
           2.645833333333333000
           31.750000000000000000)
@@ -3077,7 +3077,7 @@ object FrmRelDiario: TFrmRelDiario
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          52.916666666666660000
+          52.916666666666670000
           1952.625000000000000000
           29.104166666666670000
           31.750000000000000000)
@@ -3300,7 +3300,7 @@ object FrmRelDiario: TFrmRelDiario
           44.979166666666670000
           317.500000000000000000
           317.500000000000000000
-          822.854166666666600000)
+          822.854166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -3386,7 +3386,7 @@ object FrmRelDiario: TFrmRelDiario
       object QRLabel43: TQRLabel
         Left = 1008
         Top = 137
-        Width = 42
+        Width = 137
         Height = 13
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -3394,15 +3394,15 @@ object FrmRelDiario: TFrmRelDiario
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          34.395833333333340000
+          34.395833333333330000
           2667.000000000000000000
           362.479166666666700000
-          111.125000000000000000)
+          362.479166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -5839,7 +5839,7 @@ object FrmRelDiario: TFrmRelDiario
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        232.833333333333400000
+        232.833333333333300000
         2860.145833333333000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False

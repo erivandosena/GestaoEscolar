@@ -251,7 +251,7 @@ begin
 ShowMessage('Suporte Técnico: GEES - Gerenciamento Escolar'
 +#13+#13+'Atendimento e suporte técnico ao cliente:'
 +#13+'Horário: De Segunda à Sexta, das 8:00h às 17:00h'
-+#13+'Suporte: Tel.(85)8866.0003 E-mail/Skype: erivandoramos@bol.com.br'
++#13+'Suporte: Tel.(85)8866.0003 E-mail: erivandoramos@bol.com.br'
 +#13+'___________________________________________________________________________________'
 +#13+#13+'© Propriedade Intelectual de Programa de Computador protegida sob Lei do Direito Autoral, LEI 9609/98.');
 end;
@@ -268,7 +268,7 @@ end;
 
 procedure TFrmPrincipal.BitBtn8Click(Sender: TObject);
 begin
-ShowMessage('RWD Serviços de Informática'
+ShowMessage('GEES 1.0 www.sisescola.com.br'
 +#13+#13+'Atendimento e suporte técnico ao cliente:'
 +#13+'Horário: De Segunda à Sexta, das 8:00h às 17:00h'
 +#13+'Suporte: Tel.(85)8866.0003 E-mail/Skype: erivandoramos@bol.com.br'
