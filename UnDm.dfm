@@ -5,7 +5,9 @@ object Dm: TDm
   Height = 527
   Width = 770
   object IBDatabase: TIBDatabase
-    DatabaseName = 'localhost:h:\PROJETOS\versionados\Gees\dados\GEES.FDB'
+    DatabaseName = 
+      'localhost:E:\Google Drive\PROJETOS\versionados\Gees\dados\GEES.F' +
+      'DB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey')

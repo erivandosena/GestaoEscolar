@@ -192,7 +192,7 @@ object FrmRelCertFun: TFrmRelCertFun
       object QRLabel7: TQRLabel
         Left = 1010
         Top = 730
-        Width = 41
+        Width = 137
         Height = 13
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -200,15 +200,15 @@ object FrmRelCertFun: TFrmRelCertFun
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          34.395833333333340000
+          34.395833333333330000
           2672.291666666667000000
           1931.458333333333000000
-          108.479166666666700000)
+          362.479166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText

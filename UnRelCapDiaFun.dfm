@@ -247,7 +247,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
       object QRLabel43: TQRLabel
         Left = 1016
         Top = 730
-        Width = 42
+        Width = 137
         Height = 13
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -255,15 +255,15 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          34.395833333333340000
+          34.395833333333330000
           2688.166666666667000000
           1931.458333333333000000
-          111.125000000000000000)
+          362.479166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -608,7 +608,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         Size.Values = (
           44.979166666666670000
           1058.333333333333000000
-          867.833333333333500000
+          867.833333333333300000
           87.312500000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -639,7 +639,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         Size.Values = (
           44.979166666666670000
           1526.645833333333000000
-          867.833333333333500000
+          867.833333333333300000
           68.791666666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -670,8 +670,8 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         Size.Values = (
           44.979166666666670000
           1767.416666666667000000
-          867.833333333333500000
-          82.020833333333340000)
+          867.833333333333300000
+          82.020833333333330000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -700,8 +700,8 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1947.333333333334000000
-          867.833333333333500000
+          1947.333333333333000000
+          867.833333333333300000
           76.729166666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -733,7 +733,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
           44.979166666666670000
           1397.000000000000000000
           1016.000000000000000000
-          121.708333333333400000)
+          121.708333333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -2445,6 +2445,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
+        Caption = 'QRLabel_Curso'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2475,6 +2476,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
+        Caption = 'QRLabel_Serie'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2505,6 +2507,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
+        Caption = 'QRLabel_Turma'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2535,6 +2538,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
+        Caption = 'QRLabel_Turno'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2565,6 +2569,7 @@ object FrmRelCapDiaFun: TFrmRelCapDiaFun
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
+        Caption = 'QRLabel_Disciplina'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText

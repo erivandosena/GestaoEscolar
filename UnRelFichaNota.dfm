@@ -104,7 +104,7 @@ object FrmRelFichaNota: TFrmRelFichaNota
       object QRSysData2: TQRSysData
         Left = 0
         Top = 0
-        Width = 151
+        Width = 107
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -115,7 +115,7 @@ object FrmRelFichaNota: TFrmRelFichaNota
           44.979166666666670000
           0.000000000000000000
           0.000000000000000000
-          399.520833333333300000)
+          283.104166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -1356,7 +1356,7 @@ object FrmRelFichaNota: TFrmRelFichaNota
       object QRLabel17: TQRLabel
         Left = 0
         Top = 5
-        Width = 114
+        Width = 143
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -1367,12 +1367,12 @@ object FrmRelFichaNota: TFrmRelFichaNota
           44.979166666666670000
           0.000000000000000000
           13.229166666666670000
-          301.625000000000000000)
+          378.354166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'GEES 1.0 www.rwd.net.br'
+        Caption = 'GEES 1.0 www.sisescola.com.br'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -4235,7 +4235,7 @@ object FrmRelFichaNota: TFrmRelFichaNota
       object QRSysData1: TQRSysData
         Left = 496
         Top = 5
-        Width = 45
+        Width = 77
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -4246,7 +4246,7 @@ object FrmRelFichaNota: TFrmRelFichaNota
           44.979166666666670000
           1312.333333333333000000
           13.229166666666670000
-          119.062500000000000000)
+          203.729166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
