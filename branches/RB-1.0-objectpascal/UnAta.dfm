@@ -274,8 +274,8 @@ object FrmAta: TFrmAta
     OnClick = CBox_UnificaClick
   end
   object DBDisciplinas: TDBGrid
-    Left = 537
-    Top = 62
+    Left = 377
+    Top = 102
     Width = 214
     Height = 83
     DataSource = Dm.DSConsulta1
@@ -289,8 +289,8 @@ object FrmAta: TFrmAta
     Visible = False
   end
   object DBGrid1: TDBGrid
-    Left = 537
-    Top = 240
+    Left = 377
+    Top = 280
     Width = 214
     Height = 83
     DataSource = DSConsulta
@@ -304,8 +304,8 @@ object FrmAta: TFrmAta
     Visible = False
   end
   object DBGrid2: TDBGrid
-    Left = 537
-    Top = 151
+    Left = 377
+    Top = 191
     Width = 214
     Height = 83
     DataSource = Dm.DSConsulta2
@@ -319,8 +319,8 @@ object FrmAta: TFrmAta
     Visible = False
   end
   object DBGrid3: TDBGrid
-    Left = 185
-    Top = 86
+    Left = 258
+    Top = 102
     Width = 114
     Height = 261
     DataSource = DataSource1
@@ -334,8 +334,8 @@ object FrmAta: TFrmAta
     Visible = False
   end
   object DBGrid4: TDBGrid
-    Left = 65
-    Top = 86
+    Left = 138
+    Top = 102
     Width = 114
     Height = 261
     DataSource = DataSource2
@@ -370,7 +370,7 @@ object FrmAta: TFrmAta
       Height = 14
       Alignment = taCenter
       AutoSize = False
-      Caption = 'Por favor aguarde! Iniciando processo...'
+      Caption = 'Por favor aguarde!'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -392,13 +392,13 @@ object FrmAta: TFrmAta
   end
   object DataSource1: TDataSource
     DataSet = Dm.IBDS_DiscAta
-    Left = 368
-    Top = 200
+    Left = 296
+    Top = 136
   end
   object DataSource2: TDataSource
     DataSet = Dm.IBDS_DiscAta2
-    Left = 264
-    Top = 192
+    Left = 176
+    Top = 136
   end
   object IBConsulta: TIBQuery
     Database = Dm.IBDatabase
@@ -414,6 +414,7 @@ object FrmAta: TFrmAta
     Database = Dm.IBDatabase
     Transaction = Dm.IBTransaction
     ForcedRefresh = True
+    BufferChunks = 10
     Left = 704
     Top = 48
   end

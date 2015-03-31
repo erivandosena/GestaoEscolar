@@ -17,6 +17,12 @@ type
     DS_DIARIO: TDataSource;
     Btn_Informar: TBitBtn;
     SemImagem: TImage;
+    CBox_Serie: TComboBox;
+    CBox_Turma: TComboBox;
+    CBox_Turno: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
     Btn_Imprimir: TBitBtn;
     IBQuery_Diario: TIBQuery;
     IBQuery_DiarioFOTO: TBlobField;
@@ -26,22 +32,12 @@ type
     IBQuery_DiarioTURNO: TIBStringField;
     IBQuery_DiarioANO_LETIVO: TIBStringField;
     IBQuery_DiarioMATRICULA: TIBStringField;
+    Label4: TLabel;
+    CBox_Disciplina: TComboBox;
+    Label5: TLabel;
     SeletorMes: TDateTimePicker;
     Label6: TLabel;
     IBQuery_DiarioCURSO: TIBStringField;
-    Label11: TLabel;
-    CBox_Curso: TComboBox;
-    Label3: TLabel;
-    CBox_Serie: TComboBox;
-    Label1: TLabel;
-    CBox_Turma: TComboBox;
-    Label2: TLabel;
-    CBox_Turno: TComboBox;
-    Label9: TLabel;
-    CBox_Disciplina: TComboBox;
-    CBox_AnoLetivo: TComboBox;
-    Mensal: TRadioButton;
-    RadioButton1: TRadioButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -76,7 +72,8 @@ uses UnDm, UnPrincipal, UnAlunos, UnRelDiario, UnRelDiarioInf;
 procedure TFrmDiario.FormCreate(Sender: TObject);
 begin
 Shortdateformat:='dd/mm/yyyy';
-SeletorMes.Date:= Data;
+//SeletorMes.Date:= Data;
+SeletorMes.Date:= StrToDate(FormatDateTime('dd/MM/yyyy', Data));
 end;
 
 procedure TFrmDiario.FormShow(Sender: TObject);
@@ -231,7 +228,7 @@ end;
 
 procedure TFrmDiario.Btn_ImprimirClick(Sender: TObject);
 begin
-if (IBQuery_Diario.FieldByName('CURSO').AsString = 'EDUCAÇÃO INFANTIL') then
+if (CBox_Serie.Text = 'JARDIM I') or (CBox_Serie.Text = 'JARDIM II') or (CBox_Serie.Text = 'MATERNAL') or (CBox_Serie.Text = 'ALFABETIZAÇÃO') then
 begin
 try
  FrmRelDiarioInf:=TFrmRelDiarioInf.Create(nil);

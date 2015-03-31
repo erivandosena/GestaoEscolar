@@ -198,15 +198,15 @@ begin
     ClientDS_Ata.Fields.Clear;
     ClientDS_Ata.FieldDefs.Clear;
 
-    (* coluna COD_NOTA *)
-(*    Campos  := TIntegerField.Create(self);
+    (* coluna COD_NOTA *) (*
+    Campos  := TIntegerField.Create(self);
     Campos.FieldName := 'COD_NOTA';
     Campos.Name := ClientDS_Ata.Name + Campos.FieldName;
     Campos.Index := ClientDS_Ata.FieldCount;
     Campos.DataSet := ClientDS_Ata;
     Campos.DisplayLabel := 'ID Média';
-    Campos.Visible:= False;
-*)
+    Campos.Visible:= False; *)
+
     (* coluna COD_BOLE *)
     Campos  := TIntegerField.Create(self);
     Campos.FieldName := 'COD_BOLE';
@@ -252,7 +252,6 @@ begin
       Campos.Index := ClientDS_Ata.FieldCount;
       Campos.DataSet := ClientDS_Ata;
       Campos.Required := False;
-     // Campos.FieldKind := fkInternalCalc;
       Campos.DisplayLabel := FrmPrincipal.AbreviarNome(str);
       Campos.Alignment:= taCenter;
       Campos.Size:= 5;
@@ -263,7 +262,6 @@ end;
 until Dm.IBConsulta1.Eof;
 Dm.IBConsulta1.First;
 end;
-
     // colunas DISCIPLINAS
     IBDS_DiscAta.First;
     while not IBDS_DiscAta.Eof do
@@ -276,7 +274,6 @@ end;
       Campos.Index := ClientDS_Ata.FieldCount;
       Campos.DataSet := ClientDS_Ata;
       Campos.Required := False;
-     // Campos.FieldKind := fkInternalCalc;
       Campos.DisplayLabel := FrmPrincipal.AbreviarNome(str);
       Campos.Alignment:= taCenter;
       Campos.Size:= 5;
@@ -371,11 +368,9 @@ with Dm do
       if not ClientDS_Ata.Locate('COD_BOLE', IBDS_NotAta.FieldByName('COD_BOLE').Value,[])
    and
   Dm.IBDS_MatAta.Locate('MATRICULA', IBDS_NotAta.FieldByName('MATRICULA').Value,[])
- // Dm.IBDS_MatAta.Locate('MATRICULA;ANO_LETIVO',VarArrayOf([IBDS_NotAta.FieldByName('MATRICULA').Value,IBDS_NotAta.FieldByName('ANO_LETIVO').Value]), [])
       then
       begin
         ClientDS_Ata.Append;
-        //ClientDS_Ata.FieldByName('COD_NOTA').AsInteger := IBDS_NotAta.FieldByName('COD_NOTA').AsInteger;
         ClientDS_Ata.FieldByName('COD_BOLE').AsInteger := IBDS_NotAta.FieldByName('COD_BOLE').AsInteger;
         ClientDS_Ata.FieldByName('MATRICULA').AsString := IBDS_NotAta.FieldByName('MATRICULA').AsString;
         ClientDS_Ata.FieldByName('NOME_ALUNO').AsString := IBDS_MatAta.FieldByName('NOME_ALUNO').AsString;
@@ -426,19 +421,6 @@ else if ( StrToFloat(N2) >= StrToFloat(N1) ) and  ( StrToFloat(N2) >= StrToFloat
 else
  ResulatadoF:= N3;
 
-//if ClientDS_Ata.FieldByName(FrmPrincipal.EliminaBrancos(FrmPrincipal.CheckDateFormat(FrmPrincipal.AnsiToAscii(str)))).AsString = '0' then
-//begin
-//ClientDS_Ata.FieldByName(FrmPrincipal.EliminaBrancos(FrmPrincipal.CheckDateFormat(FrmPrincipal.AnsiToAscii(str)))).AsString:= '';
-//end;
-
-(*
-if  StrToFloat(ResulatadoF) < 6 then
-begin
-ClientDS_Ata.FieldByName('SITUACAO_FINAL').AsString:= 'REPROVADO';
-end else
-ClientDS_Ata.FieldByName('SITUACAO_FINAL').AsString:= 'APROVADO';
- *)
-
 ClientDS_Ata.FieldByName('SITUACAO_FINAL').AsString:= IBDS_NotAta.FieldByName('RESULTADO_FINAL').AsString;
 
 // verifica se foi transferido
@@ -481,16 +463,21 @@ CBox_AnoLetivo.SetFocus;
 Exit;
 end else
 PanelTempo.Visible:= True;
+LabelTempo.Caption:= 'Por favor aguarde! Iniciando o processo.';
 Application.ProcessMessages;
 Screen.Cursor := crSQLWait;
+Sleep(500); //Aguarda 500 milisegundos
 
 /////////
+//Dm.IBDS_MatAta.Close;
+//Dm.IBDS_MatAta.SelectSQL.Clear;
+//Dm.IBDS_MatAta.SelectSQL.Add('select COD_BOLE from BOLETIM where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39);
+//Dm.IBDS_MatAta.Prepare;
+//Dm.IBDS_MatAta.Open;
 
 Dm.IBDS_MatAta.Close;
 Dm.IBDS_MatAta.SelectSQL.Clear;
-Dm.IBDS_MatAta.SelectSQL.Add('select * from MATRICUL A ');
-Dm.IBDS_MatAta.SelectSQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select * from BOLETIM where MATRICULA = A.MATRICULA and ANO_LETIVO = A.ANO_LETIVO and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+')');
-Dm.IBDS_MatAta.SelectSQL.Add('order by NOME_ALUNO');
+Dm.IBDS_MatAta.SelectSQL.Add('select COD_BOLE, MATRICULA, NOME_ALUNO, CURSO, SERIE, TURMA, TURNO, ANO_LETIVO from BOLETIM where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39);
 Dm.IBDS_MatAta.Prepare;
 Dm.IBDS_MatAta.Open;
 
@@ -501,35 +488,44 @@ Dm.IBDS_MatAta.Next;
 until Dm.IBDS_MatAta.Eof;
 /////////
 
-
-     // verifica se já houve filtros
-     if Gera = 0 then
-     begin
-     Dm.ClientDS_Ata.IndexName := '';
-     end else
+// verifica se já houve filtros
+if Gera = 0 then
+begin
+Dm.ClientDS_Ata.IndexName := '';
+end else
 
 Dm.IBDS_DiscAta.Close;
 Dm.IBDS_DiscAta.SelectSQL.Clear;
-Dm.IBDS_DiscAta.SelectSQL.Add('select distinct DISCIPLINA from NOTAS A ');
-Dm.IBDS_DiscAta.SelectSQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select * from BOLETIM where COD_BOLE = A.COD_BOLE and MATRICULA = A.MATRICULA and ANO_LETIVO = A.ANO_LETIVO and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+')');
-Dm.IBDS_DiscAta.SelectSQL.Add('order by COD_NOTA');
+Dm.IBDS_DiscAta.SelectSQL.Add('select distinct DISCIPLINA from NOTAS where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39);
 Dm.IBDS_DiscAta.Prepare;
 Dm.IBDS_DiscAta.Open;
 
+LabelTempo.Caption:= 'Por favor aguarde! Iniciando o processo..';
+Application.ProcessMessages;
+Sleep(500);
+
 Dm.IBDS_NotAta.Close;
 Dm.IBDS_NotAta.SelectSQL.Clear;
-Dm.IBDS_NotAta.SelectSQL.Add('select * from NOTAS A ');
-Dm.IBDS_NotAta.SelectSQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select * from BOLETIM where COD_BOLE = A.COD_BOLE and MATRICULA = A.MATRICULA and ANO_LETIVO = A.ANO_LETIVO and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+')');
-Dm.IBDS_NotAta.SelectSQL.Add('order by COD_NOTA');
+Dm.IBDS_NotAta.SelectSQL.Add('select cod_bole, matricula, disciplina, ano_letivo, etapa_1_mar, etapa_1_abr, etapa_1_av3, etapa_1_m, etapa_1_r, etapa_2_mai, etapa_2_jun, etapa_2_av3, etapa_2_m, etapa_2_r, etapa_3_ago, etapa_3_set, etapa_3_av3, etapa_3_m, etapa_3_r, etapa_4_out, ');
+Dm.IBDS_NotAta.SelectSQL.Add(' etapa_4_nov, etapa_4_av3, etapa_4_m, etapa_4_r, provao, provao_r, media_final, faltas, pontos, resultado_final from NOTAS where ');
+Dm.IBDS_NotAta.SelectSQL.Add(' ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39);
 Dm.IBDS_NotAta.Open;
 
+LabelTempo.Caption:= 'Por favor aguarde! Iniciando o processo...';
+Application.ProcessMessages;
+Sleep(500);
+
+(*
 Dm.IBDS_MatAta.Close;
 Dm.IBDS_MatAta.SelectSQL.Clear;
-Dm.IBDS_MatAta.SelectSQL.Add('select * from MATRICUL A ');
-Dm.IBDS_MatAta.SelectSQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select * from BOLETIM where MATRICULA = A.MATRICULA and ANO_LETIVO = A.ANO_LETIVO and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+')');
-Dm.IBDS_MatAta.SelectSQL.Add('order by NOME_ALUNO');
+Dm.IBDS_MatAta.SelectSQL.Add('select COD_BOLE, MATRICULA, NOME_ALUNO, CURSO, SERIE, TURMA, TURNO, ANO_LETIVO from BOLETIM where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39);
 Dm.IBDS_MatAta.Prepare;
 Dm.IBDS_MatAta.Open;
+*)
+
+LabelTempo.Caption:= 'Analizando as disciplinas...';
+Application.ProcessMessages;
+Sleep(500);
 
 // referente união de disciplinas
 with Dm.IBConsulta1 do
@@ -537,29 +533,36 @@ begin
 Close;
 UnPrepare;
 SQL.Clear;
-SQL.Add('select distinct DISCIPLINA from MATERIAS A');
-SQL.Add('where DISTRIBUIDA = '+#39+'SIM'+#39+' and not exists ( select * from NOTAS where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and DISCIPLINA = A.DISCIPLINA)');
-SQL.Add('order by COD_MATE');
+SQL.Add('select distinct M.DISCIPLINA from MATERIAS M ');
+SQL.Add(' where M.DISTRIBUIDA = '+#39+'SIM'+#39+' and not exists ( select * from NOTAS N where N.ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and N.SERIE = '+#39+CBox_Serie.Text+#39+' and N.TURMA = '+#39+CBox_Turma.Text+#39+' and N.TURNO = '+#39+CBox_Turno.Text+#39+' and N.DISCIPLINA = M.DISCIPLINA) ');
+SQL.Add(' order by M.COD_MATE');
 Prepare;
 Open;
 end;
+
+LabelTempo.Caption:= 'Preparando para unificar disciplinas...';
+Application.ProcessMessages;
+Sleep(500);
+
 // referente união de medias
 with Dm.IBConsulta2 do
 begin
 Close;
 UnPrepare;
 SQL.Clear;
-SQL.Add('select * from NOTAS A');
-SQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select distinct DISCIPLINA, DISTRIBUIDA, UNIFICACAO from MATERIAS where DISTRIBUIDA = '+#39+'NÃO'+#39+' and UNIFICACAO is not null and DISCIPLINA = A.DISCIPLINA)');
-SQL.Add('order by COD_NOTA');
+SQL.Add('select N.etapa_1_mar, N.etapa_1_abr, N.etapa_1_av3, N.etapa_1_m, N.etapa_1_r, N.etapa_2_mai, N.etapa_2_jun, N.etapa_2_av3, N.etapa_2_m, N.etapa_2_r, N.etapa_3_ago, ');
+SQL.Add(' N.etapa_3_set, N.etapa_3_av3, N.etapa_3_m, N.etapa_3_r, N.etapa_4_out, N.etapa_4_nov, N.etapa_4_av3, N.etapa_4_m, N.etapa_4_r, N.provao, N.provao_r, N.media_final, N.faltas, N.pontos, N.resultado_final from NOTAS N ');
+SQL.Add(' where N.ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and N.SERIE = '+#39+CBox_Serie.Text+#39+' and N.TURMA = '+#39+CBox_Turma.Text+#39+' and N.TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select distinct M.DISCIPLINA, M.DISTRIBUIDA, M.UNIFICACAO from MATERIAS M where M.DISTRIBUIDA = '+#39+'NÃO'+#39+' and M.UNIFICACAO is not null and M.DISCIPLINA = N.DISCIPLINA) ');
+SQL.Add(' order by N.COD_NOTA');
 Prepare;
 Open;
 end;
-LabelTempo.Caption:= 'Por favor aguarde! Criando disciplinas...';
+
+LabelTempo.Caption:= 'Relacionando alunos e disciplinas...';
 Application.ProcessMessages;
+
 CriarTabelaTemporaria;
-Application.ProcessMessages;
-LabelTempo.Caption:= 'Por favor aguarde! Unificando as disciplinas...';
+
 if CBox_Unifica.Checked = True then
 begin
 with Dm.IBDS_DiscAta2 do
@@ -567,36 +570,43 @@ begin
 Close;
 UnPrepare;
 SelectSQL.Clear;
-SelectSQL.Add('select distinct DISCIPLINA from NOTAS A');
-SelectSQL.Add('where ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and');
-SelectSQL.Add('not exists (select distinct DISCIPLINA from MATERIAS');
-SelectSQL.Add('where DISTRIBUIDA = '+#39+'NÃO'+#39+' and UNIFICACAO is not null and DISCIPLINA = A.DISCIPLINA)');
-SelectSQL.Add('order by COD_NOTA');
+SelectSQL.Add('select distinct N.DISCIPLINA from NOTAS N ');
+SelectSQL.Add(' where N.ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and N.SERIE = '+#39+CBox_Serie.Text+#39+' and N.TURMA = '+#39+CBox_Turma.Text+#39+' and N.TURNO = '+#39+CBox_Turno.Text+#39+' and ');
+SelectSQL.Add(' not exists ( select distinct M.DISCIPLINA from MATERIAS M where M.DISTRIBUIDA = '+#39+'NÃO'+#39+' and M.UNIFICACAO is not null and M.DISCIPLINA = N.DISCIPLINA) ');
+SelectSQL.Add(' order by N.COD_NOTA');
 Prepare;
 Open;
 end;
+
+LabelTempo.Caption:= 'Preparando o cálculo das médias...';
+Application.ProcessMessages;
+Sleep(500);
+
  Dm.ClientDS_Ata.first;
   while not Dm.ClientDS_Ata.eof do
   begin
 Dm.IBConsulta1.first;
 while not Dm.IBConsulta1.eof do
 begin
-LabelTempo.Caption:= 'Por favor aguarde! Calculando médias unificadas...';
+
+LabelTempo.Caption:= 'Calculando médias, aguarde só alguns minutos...';
 Application.ProcessMessages;
+
 // referente união de medias
 with Dm.IBConsulta2 do
 begin
 Close;
 UnPrepare;
 SQL.Clear;
-SQL.Add('select sum(cast(MEDIA_FINAL as numeric(18,2))/10) from NOTAS A');
-SQL.Add('where MATRICULA = '+#39+Dm.ClientDS_Ata.FieldByName('MATRICULA').AsString+#39+' and ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and SERIE = '+#39+CBox_Serie.Text+#39+' and TURMA = '+#39+CBox_Turma.Text+#39+' and TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select distinct DISCIPLINA, DISTRIBUIDA, UNIFICACAO from MATERIAS where DISTRIBUIDA = '+#39+'NÃO'+#39+' and UNIFICACAO = '+#39+Dm.IBConsulta1.FieldByName('DISCIPLINA').Value+#39+' and DISCIPLINA = A.DISCIPLINA)');
-SQL.Add('order by COD_NOTA');
+SQL.Add('select sum(cast(N.MEDIA_FINAL as numeric(18,2))/10) from NOTAS N ');
+SQL.Add(' where N.MATRICULA = '+#39+Dm.ClientDS_Ata.FieldByName('MATRICULA').AsString+#39+' and N.ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and N.SERIE = '+#39+CBox_Serie.Text+#39+' and N.TURMA = '+#39+CBox_Turma.Text+#39+' and N.TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select distinct M.DISCIPLINA, M.DISTRIBUIDA, M.UNIFICACAO from MATERIAS M where M.DISTRIBUIDA = '+#39+'NÃO'+#39+' and M.UNIFICACAO = '+#39+Dm.IBConsulta1.FieldByName('DISCIPLINA').Value+#39+' and M.DISCIPLINA = N.DISCIPLINA) ');
+SQL.Add(' order by N.COD_NOTA');
 Prepare;
 Open;
 end;
 
-
+LabelTempo.Caption:= 'Calculando média para '+ Dm.IBConsulta1.FieldByName('DISCIPLINA').AsString+'...';
+Application.ProcessMessages;
 
 Dm.IBConsulta2.First;
 
@@ -607,24 +617,19 @@ valor:= '0';
 end else
 valor:= Dm.IBConsulta2.FieldByName('F_1').AsString;
 
-
 with IBDivisor do
     begin
     Close;
     SQL.Clear;
-    SQL.Add( 'select distinct count(DISCIPLINA) as Divisor from NOTAS N ');
-    SQL.Add( ' where MATRICULA = '+#39+Dm.ClientDS_Ata.FieldByName('MATRICULA').AsString+#39);
-    SQL.Add( ' and ANO_LETIVO =  '+#39+CBox_AnoLetivo.Text+#39);
-    SQL.Add( ' and SERIE =  '+#39+CBox_Serie.Text+#39);
-    SQL.Add( ' and TURMA =  '+#39+CBox_Turma.Text+#39);
-    SQL.Add( ' and TURNO =  '+#39+CBox_Turno.Text+#39);
-    SQL.Add( ' and exists ( select distinct DISCIPLINA, ');
-    SQL.Add( ' DISTRIBUIDA, UNIFICACAO from MATERIAS ');
-    SQL.Add( ' where DISTRIBUIDA = '+#39+'NÃO'+#39);
-    SQL.Add( ' and UNIFICACAO = '+#39+Dm.IBConsulta1.FieldByName('DISCIPLINA').AsString+#39);
-    SQL.Add( ' and DISCIPLINA = N.DISCIPLINA)');
+    SQL.Add('select distinct count(N.DISCIPLINA) as Divisor from NOTAS N ');
+    SQL.Add(' where N.MATRICULA = '+#39+Dm.ClientDS_Ata.FieldByName('MATRICULA').AsString+#39+' and N.ANO_LETIVO = '+#39+CBox_AnoLetivo.Text+#39+' and N.SERIE = '+#39+CBox_Serie.Text+#39+' and N.TURMA = '+#39+CBox_Turma.Text+#39+' and N.TURNO = '+#39+CBox_Turno.Text+#39+' and exists ( select distinct M.DISCIPLINA, M.DISTRIBUIDA, M.UNIFICACAO from MATERIAS M where M.DISTRIBUIDA = '+#39+'NÃO'+#39+' and M.UNIFICACAO = '+#39+Dm.IBConsulta1.FieldByName('DISCIPLINA').Value+#39+' and M.DISCIPLINA = N.DISCIPLINA) ');
+    SQL.Add(' order by N.COD_NOTA');
     Open;
     end;
+
+LabelTempo.Caption:= 'Preparando para o próximo cálculo...';
+Application.ProcessMessages;
+Sleep(350);
 
 valorfinal:= StrToFloat(CurrToStr(FrmBoletim.Arredonda5e0((StrToCurr('0')+StrToCurr('0')+StrToCurr('0')+StrToCurr(valor))/IBDivisor.FieldByName('Divisor').AsInteger)));
 
@@ -647,9 +652,11 @@ pbAplicando.Progress := Dm.ClientDS_Ata.RecNo;
   Dm.ClientDS_Ata.next;
   end;
 
-end else
-  LabelTempo.Caption:= 'Por favor aguarde! Finalizando processo...';
+  LabelTempo.Caption:= 'Finalizado!';
   Application.ProcessMessages;
+  Sleep(500);
+
+end else
 Gera:= 0;
 PanelTempo.Visible:= False;
 Btn_Imprimir.Enabled:= True;
@@ -659,7 +666,7 @@ end;
 procedure TFrmAta.Btn_ImprimirClick(Sender: TObject);
 begin
 try
- FrmRelAta:=TFrmRelAta.Create(nil);
+ FrmRelAta:=TFrmRelAta.Create(Nil);
  FrmRelAta.QuickRep1.PreviewModal;
 finally
  FrmRelAta.Release;

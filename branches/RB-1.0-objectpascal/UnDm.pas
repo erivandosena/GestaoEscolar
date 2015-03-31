@@ -506,7 +506,7 @@ IBDS_MATRICULAS.Open;
 IBDS_BOLETIM.Open;
 IBDS_NOTAS.Open;
 IBDS_CARNE.Open;
-IBDS_DiscAta.Open;
+//IBDS_DiscAta.Open;
 IBDS_NotAta.Open;
 IBDS_MatAta.Open;
 //IBDS_CURSOS.Open;
