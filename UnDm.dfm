@@ -21,8 +21,11 @@ object Dm: TDm
     DefaultDatabase = IBDatabase
     DefaultAction = TACommitRetaining
     Params.Strings = (
+      'read'
+      'write'
       'read_committed'
-      'rec_version')
+      'rec_version'
+      'nowait')
     Left = 120
     Top = 8
   end
@@ -3227,6 +3230,7 @@ object Dm: TDm
   end
   object ClientDS_Ata: TClientDataSet
     Aggregates = <>
+    PacketRecords = 10
     Params = <>
     Left = 296
     Top = 304
