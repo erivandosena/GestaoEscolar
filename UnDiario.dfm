@@ -4,7 +4,7 @@ object FrmDiario: TFrmDiario
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Di'#225'rios'
-  ClientHeight = 422
+  ClientHeight = 425
   ClientWidth = 792
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -25,8 +25,8 @@ object FrmDiario: TFrmDiario
   PixelsPerInch = 96
   TextHeight = 13
   object SemImagem: TImage
-    Left = 664
-    Top = 319
+    Left = 12
+    Top = 384
     Width = 116
     Height = 25
     Center = True
@@ -1743,6 +1743,71 @@ object FrmDiario: TFrmDiario
       1C201B1D1E1A1C1D191C20878A8E}
     Visible = False
   end
+  object Label1: TLabel
+    Left = 24
+    Top = 334
+    Width = 42
+    Height = 16
+    Caption = 'S'#233'rie:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 176
+    Top = 334
+    Width = 49
+    Height = 16
+    Caption = 'Turma:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 264
+    Top = 334
+    Width = 45
+    Height = 16
+    Caption = 'Turno:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 352
+    Top = 334
+    Width = 74
+    Height = 16
+    Caption = 'Disciplina:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 528
+    Top = 334
+    Width = 34
+    Height = 16
+    Caption = 'M'#234's:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Label6: TLabel
     Left = 8
     Top = 8
@@ -1756,74 +1821,9 @@ object FrmDiario: TFrmDiario
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label11: TLabel
-    Left = 8
-    Top = 320
-    Width = 35
-    Height = 13
-    Caption = 'Curso:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label3: TLabel
-    Left = 192
-    Top = 320
-    Width = 32
-    Height = 13
-    Caption = 'S'#233'rie:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label1: TLabel
-    Left = 351
-    Top = 320
-    Width = 40
-    Height = 13
-    Caption = 'Turma:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 445
-    Top = 320
-    Width = 36
-    Height = 13
-    Caption = 'Turno:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label9: TLabel
-    Left = 539
-    Top = 320
-    Width = 56
-    Height = 13
-    Caption = 'Disciplina:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object DBGrid_Listagem: TDBGrid
     Left = 8
-    Top = 27
+    Top = 24
     Width = 777
     Height = 283
     Color = clWhite
@@ -1836,7 +1836,7 @@ object FrmDiario: TFrmDiario
     Font.Style = [fsBold]
     Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -1926,9 +1926,9 @@ object FrmDiario: TFrmDiario
       end>
   end
   object Btn_Fechar: TBitBtn
-    Left = 647
-    Top = 384
-    Width = 90
+    Left = 405
+    Top = 390
+    Width = 83
     Height = 25
     Cursor = crHandPoint
     Caption = '&Fechar'
@@ -1938,13 +1938,13 @@ object FrmDiario: TFrmDiario
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 7
     OnClick = Btn_FecharClick
     NumGlyphs = 4
   end
   object Btn_Informar: TBitBtn
-    Left = 278
-    Top = 384
+    Left = 664
+    Top = 350
     Width = 90
     Height = 25
     Cursor = crHandPoint
@@ -1955,13 +1955,97 @@ object FrmDiario: TFrmDiario
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 5
     OnClick = Btn_InformarClick
     NumGlyphs = 4
   end
+  object CBox_Serie: TComboBox
+    Left = 24
+    Top = 350
+    Width = 145
+    Height = 24
+    BevelInner = bvLowered
+    BevelKind = bkTile
+    BevelOuter = bvRaised
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    ParentFont = False
+    TabOrder = 0
+    Items.Strings = (
+      'MATERNAL'
+      'JARDIM I'
+      'JARDIM II'
+      'ALFABETIZA'#199#195'O'
+      'INFANTIL I'
+      'INFANTIL II'
+      'INFANTIL III'
+      'INFANTIL IV'
+      'INFANTIL V'
+      '1'#170' S'#201'RIE'
+      '2'#170' S'#201'RIE'
+      '3'#170' S'#201'RIE'
+      '4'#170' S'#201'RIE'
+      '5'#170' S'#201'RIE'
+      '6'#170' S'#201'RIE'
+      '7'#170' S'#201'RIE'
+      '8'#170' S'#201'RIE'
+      '9'#170' S'#201'RIE'
+      '')
+  end
+  object CBox_Turma: TComboBox
+    Left = 176
+    Top = 350
+    Width = 80
+    Height = 24
+    BevelInner = bvLowered
+    BevelKind = bkTile
+    BevelOuter = bvRaised
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    ParentFont = False
+    TabOrder = 1
+    Items.Strings = (
+      'A'
+      'B'
+      'C'
+      'D'
+      'E')
+  end
+  object CBox_Turno: TComboBox
+    Left = 264
+    Top = 350
+    Width = 80
+    Height = 24
+    BevelInner = bvLowered
+    BevelKind = bkTile
+    BevelOuter = bvRaised
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    ParentFont = False
+    TabOrder = 2
+    Items.Strings = (
+      'MANH'#195
+      'TARDE'
+      'NOITE')
+  end
   object Btn_Imprimir: TBitBtn
-    Left = 381
-    Top = 384
+    Left = 292
+    Top = 390
     Width = 90
     Height = 25
     Cursor = crHandPoint
@@ -1973,178 +2057,59 @@ object FrmDiario: TFrmDiario
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 6
     OnClick = Btn_ImprimirClick
     NumGlyphs = 4
   end
+  object CBox_Disciplina: TComboBox
+    Left = 352
+    Top = 350
+    Width = 169
+    Height = 24
+    BevelInner = bvLowered
+    BevelKind = bkTile
+    BevelOuter = bvRaised
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    ParentFont = False
+    TabOrder = 3
+    Items.Strings = (
+      'MATERNAL'
+      'JARDIM I'
+      'JARDIM II'
+      'ALFABETIZA'#199#195'O'
+      '1'#170' S'#201'RIE'
+      '2'#170' S'#201'RIE'
+      '3'#170' S'#201'RIE'
+      '4'#170' S'#201'RIE'
+      '5'#170' S'#201'RIE'
+      '6'#170' S'#201'RIE'
+      '7'#170' S'#201'RIE'
+      '8'#170' S'#201'RIE')
+  end
   object SeletorMes: TDateTimePicker
-    Left = 8
-    Top = 386
+    Left = 528
+    Top = 350
     Width = 113
-    Height = 21
+    Height = 24
     BevelInner = bvNone
     BevelOuter = bvNone
-    Date = 38752.000000000000000000
+    Date = 37987.000000000000000000
     Format = 'MMMM'
-    Time = 38752.000000000000000000
-    DateMode = dmUpDown
+    Time = 37987.000000000000000000
+    DateFormat = dfLong
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 0
-  end
-  object CBox_Curso: TComboBox
-    Left = 8
-    Top = 336
-    Width = 170
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 5
-  end
-  object CBox_Serie: TComboBox
-    Left = 192
-    Top = 336
-    Width = 145
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 6
-  end
-  object CBox_Turma: TComboBox
-    Left = 351
-    Top = 336
-    Width = 80
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 7
-  end
-  object CBox_Turno: TComboBox
-    Left = 445
-    Top = 336
-    Width = 80
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 8
-  end
-  object CBox_Disciplina: TComboBox
-    Left = 539
-    Top = 336
-    Width = 198
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 9
-    Items.Strings = (
-      '')
-  end
-  object CBox_AnoLetivo: TComboBox
-    Left = 144
-    Top = 386
-    Width = 113
-    Height = 21
-    AutoDropDown = True
-    AutoCloseUp = True
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    CharCase = ecUpperCase
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ItemHeight = 13
-    ParentFont = False
-    TabOrder = 10
-    Items.Strings = (
-      'A'
-      'B'
-      'C'
-      'D'
-      'E')
-  end
-  object Mensal: TRadioButton
-    Left = 8
-    Top = 369
-    Width = 113
-    Height = 18
-    Caption = 'Mensal'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 11
-  end
-  object RadioButton1: TRadioButton
-    Left = 144
-    Top = 369
-    Width = 113
-    Height = 17
-    Caption = 'Aual'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 12
+    TabOrder = 4
   end
   object MainMenu1: TMainMenu
     Left = 120
