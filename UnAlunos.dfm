@@ -46,10 +46,6 @@ object FrmAlunos: TFrmAlunos
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -1038,10 +1034,6 @@ object FrmAlunos: TFrmAlunos
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -1674,10 +1666,6 @@ object FrmAlunos: TFrmAlunos
     object TabSheet3: TTabSheet
       Caption = 'Dados da &M'#227'e'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel5: TPanel
         Left = 0
         Top = 0
@@ -2316,10 +2304,6 @@ object FrmAlunos: TFrmAlunos
     object TabSheet4: TTabSheet
       Caption = 'Dados do &Respons'#225'vel'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel6: TPanel
         Left = 0
         Top = 0
@@ -3017,10 +3001,6 @@ object FrmAlunos: TFrmAlunos
     object TabSheet5: TTabSheet
       Caption = 'Censo &Escolar'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBText11: TDBText
         Left = 72
         Top = 54
@@ -4132,8 +4112,8 @@ object FrmAlunos: TFrmAlunos
     SQL.Strings = (
       'select * from ALUNOS'
       'order by MATRICULA')
-    Left = 24
-    Top = 408
+    Left = 40
+    Top = 360
   end
   object OpenPictureDialog1: TOpenPictureDialog
     DefaultExt = 'jpg'
@@ -4153,8 +4133,8 @@ object FrmAlunos: TFrmAlunos
     SQL.Strings = (
       'select * from CEPS'
       'order by NOME_CID')
-    Left = 100
-    Top = 241
+    Left = 132
+    Top = 353
     object IBQuery_CEPCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = '"CEPS"."CODIGO"'

@@ -902,7 +902,7 @@ object FrmRelAta: TFrmRelAta
         TrueTypeAlert = ttaAbort
       end
       object QRLabel02: TQRAngledLabel
-        Left = 315
+        Left = 316
         Top = 17
         Width = 19
         Height = 125
@@ -913,7 +913,7 @@ object FrmRelAta: TFrmRelAta
         Frame.DrawRight = False
         Size.Values = (
           330.729166666666700000
-          833.437500000000000000
+          836.083333333333300000
           44.979166666666670000
           50.270833333333330000)
         AnchorStyle = asTextLeft

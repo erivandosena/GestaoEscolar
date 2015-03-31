@@ -8235,7 +8235,7 @@ object FrmAbertura: TFrmAbertura
     Width = 138
     Height = 26
     Alignment = taCenter
-    Caption = #169' RWD 2001-2014'#13#10'Todos os direitos reservados.'
+    Caption = #169' Senatec 2001-2015'#13#10'Todos os direitos reservados.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -11
