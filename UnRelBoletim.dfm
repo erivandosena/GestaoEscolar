@@ -2345,7 +2345,7 @@ object FrmRelBoletim: TFrmRelBoletim
           39.687500000000000000
           523.875000000000000000
           7.937500000000000000
-          89.958333333333320000)
+          89.958333333333330000)
         Alignment = taCenter
         AlignToBand = False
         AutoSize = False
