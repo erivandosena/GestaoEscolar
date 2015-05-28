@@ -630,21 +630,22 @@ QRM_Mes1.Lines.Add('1ª Etapa');
 QRM_Mes1.Lines.Add('AV1  AV2  AV3');
 QRM_Mes1.Width:= 71;
 QRM_Mes1.Left:= 198;
-QRDBT_Mes1.Left:= 198;
+QRDBT_Mes1.Left:= 197;
 QRDBT_Mes1.DataField:= 'ETAPA_1_MAR';
 QRDBT_Mes1.Width:= 23;
-QRShape35.Width:= QRShape35.Width*2;
+QRShape35.Width:= 71;
 //----------MÊS 2---------------------------------------------------------------
 QRM_Mes2.Enabled:= False;
-QRDBT_Mes2.Left:= QRDBT_Mes2.Left-12;
+QRDBT_Mes2.Left:= 220;
 QRDBT_Mes2.DataField:= 'ETAPA_1_ABR';
 QRDBT_Mes2.Width:= 23;
 //----------AV3-----------------------------------------------------------------
-QRDBT_1_AV3.Left:= QRDBT_1_AV3.Left+6;
+QRDBT_1_AV3.Left:= 244;
 QRDBT_1_AV3.DataField:= 'ETAPA_1_AV3';
-QRShape38.Width:= 23;
+QRDBT_1_AV3.Width:= 23;
+QRShape38.Width:= 24;
 QRShape38.Shape:= qrsRightAndLeft;
-QRShape38.Left:= QRShape38.Left-10;
+QRShape38.Left:= 220;
 //----------MÉDIA 1ª ETAPA------------------------------------------------------
 QRM_M1Etp.Lines.Clear;
 QRM_M1Etp.Lines.Add('1ª Etp.');
